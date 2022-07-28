@@ -10,31 +10,31 @@ const menuOptions = [
     choices: [
       {
         value:'1',
-        name:'1. Crear tarea'
+        name:`${'1.'.yellow} Crear tarea`
       },
       {
         value:'2',
-        name:'2. Listar Tareas'
+        name:`${'2.'.yellow} Listar Tareas`
       },
       {
         value:'3',
-        name:'3. Listar Tareas Completadas'
+        name:`${'3.'.yellow} Listar Tareas Completadas`
       },
       {
         value:'4',
-        name:'4. Listar Tareas pendientes'
+        name:`${'4.'.yellow} Listar Tareas pendientes`
       },
       {
         value:'5',
-        name:'5. Completar Tarea(s)'
+        name:`${'5.'.yellow} Completar Tarea(s)`
       },
       {
         value:'6',
-        name:'6. Borrar Tarea'
+        name:`${'6.'.yellow} Borrar Tarea`
       },
       {
         value:'0',
-        name:'0. Salir'
+        name:`${'0.'.yellow} Salir`
       }
     ] 
    }
@@ -44,7 +44,7 @@ const inquirerMenu = async() => {
 
     console.clear();
     console.log( '========================='.green );
-    console.log( '  Seleccione una opcion'.green );
+    console.log( '  Seleccione una opcion'.white );
     console.log( '=========================\n'.green );
     const { opcion } = await inquirer.prompt( menuOptions );
     return opcion;

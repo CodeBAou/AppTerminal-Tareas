@@ -11,6 +11,12 @@ class Tarea {
         this.desc = desc;
         this.completadoEn = null;
     }
+
+    cargarTareaFromArray( tareas = [] ){
+        tareas.forEach ( tarea => {
+            this._listado[ tarea.id ] = tarea;
+        } );
+    }
 }
 
 module.exports = Tarea;

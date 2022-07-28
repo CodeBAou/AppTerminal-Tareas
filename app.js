@@ -1,17 +1,26 @@
 //Se recomienda primero las importaciones de paquetes de terceros
 require('colors');
+
 //const { mostrarMenu, pausa } = require( './helpers/mensajes' ); 
 const { 
     inquirerMenu, 
     pausa,
     leerInput
 } = require( './helpers/inquirer' ); 
+
 const Tareas = require('./models/tareas');
+const {guardaDB, leerDB} = require('./helpers/guardarArchivo');
 
 const main = async() => {
 
-    let opt = '';
-    const tareas = new Tareas();
+    let opt        = '';
+    const tareas   = new Tareas();
+    const tareasDB = leerDB();
+
+    if( tareasDB ){
+        tareas.cargarTareasFromArray( tareasDB );
+    }
+    
 
     do{
         //Muestra el menu
@@ -23,10 +32,19 @@ const main = async() => {
                 const desc = await leerInput('Descripcion: ');
                 tareas.crearTarea( desc );
                 break;
+
             case '2':
-                console.log(tareas._Listado);
+                //Muestra todas las tareas
+                tareas.listadoCompleto();
+                break;
+                
+            case '3':
+                //Muestra informacion sobre una tarea
+
                 break;
         }
+
+        guardaDB( tareas.listadoArr ); 
 
         //Pausa Peticion usuario
         await pausa();
