@@ -57,7 +57,7 @@ class Tareas{
                                 ? 'Completado'.green
                                 : 'Pendiente'.red;
 
-            console.log(`${idx} ${desc} ${estado}}`);
+            console.log(`${idx} ${desc} ${estado} `);
         } );
 
     }
@@ -82,12 +82,38 @@ class Tareas{
                 //mostrar tareas pendientes
                 if(!completadoEn){
                     contador += 1;
-                    console.log( `${ contador + '.'.red} ${ desc } :: ${ estado }` );
+                    console.log( `${ contador + '.'.red } ${ desc } :: ${ estado }` );
                 }
             }
 
            
         });
+    }
+
+    //Marcar una tarea como completada
+    toggleCompletadas( ids = [] ){
+       
+        //Marca tarea como Completada
+        ids.forEach ( id => {
+            
+          const tarea = this._Listado[id];
+           
+            if ( !tarea.completadoEn ){
+                /**
+                 * Se modifica el objecto this._Listado[] a traves de la variable tarea, 
+                 * porque javascript pasa los valores por referencia
+                 */
+                tarea.completadoEn = new Date().toISOString();
+            }
+        });
+
+        //Marca tarea como NO COMPLETADA
+        this.listadoArr.forEach( tarea => {
+            if( !ids.includes(tarea.id) ){  //si ids incluye la tarea.id
+                this._Listado[tarea.id].completadoEn = null;
+            }
+        });
+        
     }
 }
 

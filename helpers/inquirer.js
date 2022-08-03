@@ -133,14 +133,14 @@ const mostrarListadoCheckList = async ( tareas = [] ) => {
     {
       type: 'checkbox',
       name: 'ids',
-      message: 'Selecciones',
+      message: 'Seleccione',
       choices
     }
     
   ];
 
-  const { id } = await inquirer.prompt(pregunta);
-  return id;
+  const { ids } = await inquirer.prompt(pregunta);
+  return ids;
 }
 
 const confirmar = async (message) => {

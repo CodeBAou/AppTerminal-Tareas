@@ -30,6 +30,7 @@ const main = async() => {
         opt = await inquirerMenu();
         
         switch(opt){
+
             case '1':
                 //Opcion crear tarea
                 const desc = await leerInput('Descripcion: ');
@@ -52,13 +53,13 @@ const main = async() => {
 
             case '5':
                 const ids = await mostrarListadoCheckList( tareas.listadoArr );
-                console.log(ids);
+                tareas.toggleCompletadas( ids );
                 break;   
 
             case '6':
                 //Borrar
                 const id = await listadoTareasBorrar( tareas.listadoArr );
-                const ok = await confirmar('¿Estas seguros?');
+                const ok = await confirmar('¿Estas seguro?');
             
                 if( ok ){
                     
