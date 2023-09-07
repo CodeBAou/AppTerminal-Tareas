@@ -30,7 +30,7 @@ class Tareas{
     crearTarea( desc = '' ){
 
         const tarea = new Tarea( desc );
-        this._Listado[ tara.id ] = tarea;
+        this._Listado[ tarea.id ] = tarea;
        
     }
 
